@@ -59,7 +59,7 @@ def atualizar_usuario(id_usuario):
 	   Bipa um som."""
 	print("Pesquisando usuários....")
 	linhas = []
-	with open("D:\\sinais\\usuarios.csv","r+") as arquivo:
+	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
 		linhas = arquivo.readlines()
 		nao_achou_flag = True
 		#BUSCA LINEAR PORCA!
@@ -69,7 +69,10 @@ def atualizar_usuario(id_usuario):
 				print("Usuária Encontrada! ",valor)
 				nome_atualizado = str.upper(input("Informe o novo nome da usuaria: "))
 				linhas[contador] = "{0:0>4} - {1}\n".format(id_usuario,nome_atualizado+";")
-				arquivo.writelines(linhas)
+
+				with open("D:\\sinais\\usuarios.csv","w") as arquivo2:
+					arquivo2.writelines(linhas)
+				
 				nao_achou_flag = False
 				
 	if(nao_achou_flag):
