@@ -43,7 +43,8 @@ def menu_in():
 				
 			elif opcao == "6":
 				print ("# ORDERNAR ALFA SELECIONADO")
-			
+				id_usuario = str.upper("{0:0>4}".format(input("Informe o ID do usuário: ")))
+				cadfunc.remover_usuario(id_usuario)
 			time.sleep(2)#Para não estourar a memória
 		
 		except KeyboardInterrupt as e:

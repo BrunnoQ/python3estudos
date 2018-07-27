@@ -78,6 +78,28 @@ def atualizar_usuario(id_usuario):
 	if(nao_achou_flag):
 		print("Usuária Não Encontrada!")
 
+def remover_usuario(id_usuario):
+	"""Recebe o ID da Usuária e renove a mesma da lista, conforme o informado
+	   pelo usuário.
+	   Bipa um som."""
+	print("Pesquisando usuários....")
+	linhas = []
+	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+		linhas = arquivo.readlines()
+		nao_achou_flag = True
+		#BUSCA LINEAR PORCA!
+		for contador , valor in enumerate(linhas):
+			if id_usuario in str(valor):
+				os.system("cls")
+				linhas.pop(contador)
+				with open("D:\\sinais\\usuarios.csv","w") as arquivo2:
+					arquivo2.writelines(linhas)							
+				print("Usuária removida! ",valor)
+				nao_achou_flag = False
+				
+	if(nao_achou_flag):
+		print("Usuária Não Encontrada!")
+
 def ordernar_cadastro_por_id():
 	"""Ordenar de forma Crescente / Decrescente o cadastro das usuárias.
 	   Bipa um som."""
