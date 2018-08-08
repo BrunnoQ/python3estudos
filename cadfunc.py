@@ -10,14 +10,14 @@ def inserir_usuario(nome_usuario):
 	id_usuario = 0
 	if nome_usuario != "":
 		id_usuario = random.randrange(1000)
-		with open("D:\\sinais\\usuarios.csv","a") as file:
+		with open("D:\\desenv\\usuarios.csv","a") as file:
 			file.write("{0:0>4} - {1}\n".format(id_usuario,nome_usuario+";"))
 			
 	else:
 		print("Informe o nome do usuário animal!")
 	
 	print("Usuária Cadastrada!")
-	#winsound.Beep(1000,2000)
+	winsound.Beep(1000,2000)
 	os.system("cls")
 	listar_usuarios()
 		
@@ -25,7 +25,7 @@ def pesquisar_usuario(nome_pesquisar):
 	"""Recebe o nome a ser pesquisado e printa na tela.
 	   Bipa um som."""
 	nao_encontrou_flag = True
-	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+	with open("D:\\desenv\\usuarios.csv","r") as arquivo:
 		for linha in arquivo:
 			if nome_pesquisar in linha:
 				print("Usuária cadastrada: ",linha)
@@ -34,13 +34,13 @@ def pesquisar_usuario(nome_pesquisar):
 	if(nao_encontrou_flag):
 		print(nome_pesquisar+" não está cadastrado.")
 
-	#winsound.Beep(1500,2000)
+	winsound.Beep(1500,2000)
 
 def listar_usuarios():
 	"""Lista os usuarios cadastrados no arquivo csv.
 	   Bipa um som."""
 	registro_imprimir = []
-	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+	with open("D:\\desenv\\usuarios.csv","r") as arquivo:
 		for linha in arquivo:
 			id_usuario, nome_usuario = linha.split(";")
 			registro_imprimir.append("{0:0>4};{1}".format(id_usuario, nome_usuario))
@@ -51,7 +51,8 @@ def listar_usuarios():
 	print("\n".join(registro_imprimir)+"\n")
 	print("Total Usuárias Cadastradas: ",len(registro_imprimir))
 	print("#################################")
-	#winsound.Beep(2000,2000)
+	"""9000 vai no talo!"""
+	winsound.Beep(2000,2000)
 	
 def atualizar_usuario(id_usuario):
 	"""Recebe o ID da Usuária e atualiza o nome da mesma conforme o informado
@@ -59,7 +60,7 @@ def atualizar_usuario(id_usuario):
 	   Bipa um som."""
 	print("Pesquisando usuários....")
 	linhas = []
-	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+	with open("D:\\desenv\\usuarios.csv","r") as arquivo:
 		linhas = arquivo.readlines()
 		nao_achou_flag = True
 		#BUSCA LINEAR PORCA!
@@ -70,7 +71,7 @@ def atualizar_usuario(id_usuario):
 				nome_atualizado = str.upper(input("Informe o novo nome da usuaria: "))
 				linhas[contador] = "{0:0>4} - {1}\n".format(id_usuario,nome_atualizado+";")
 
-				with open("D:\\sinais\\usuarios.csv","w") as arquivo2:
+				with open("D:\\desenv\\usuarios.csv","w") as arquivo2:
 					arquivo2.writelines(linhas)
 				
 				nao_achou_flag = False
@@ -84,7 +85,7 @@ def remover_usuario(id_usuario):
 	   Bipa um som."""
 	print("Pesquisando usuários....")
 	linhas = []
-	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+	with open("D:\\desenv\\usuarios.csv","r") as arquivo:
 		linhas = arquivo.readlines()
 		nao_achou_flag = True
 		#BUSCA LINEAR PORCA!
@@ -92,7 +93,7 @@ def remover_usuario(id_usuario):
 			if id_usuario in str(valor):
 				os.system("cls")
 				linhas.pop(contador)
-				with open("D:\\sinais\\usuarios.csv","w") as arquivo2:
+				with open("D:\\desenv\\usuarios.csv","w") as arquivo2:
 					arquivo2.writelines(linhas)							
 				print("Usuária removida! ",valor)
 				nao_achou_flag = False
@@ -104,7 +105,7 @@ def ordernar_cadastro_por_id():
 	"""Ordenar de forma Crescente / Decrescente o cadastro das usuárias.
 	   Bipa um som."""
 	lista_ordenada = []
-	with open("D:\\sinais\\usuarios.csv","r") as arquivo:
+	with open("D:\\desenv\\usuarios.csv","r") as arquivo:
 		linhas = arquivo.readlines()
 		opcao_ordenacao = str(input("Ordenar / Crescente ou Decrescente? ")).upper()
 		
@@ -112,14 +113,14 @@ def ordernar_cadastro_por_id():
 			lista_ordenada = sorted(linhas)
 			print("##### Usuárias ordenadas de forma CRESCENTE ######")
 			print("\n".join(lista_ordenada)+"\n")
-			with open("D:\\sinais\\usuarios.csv","w") as arquivo:
+			with open("D:\\desenv\\usuarios.csv","w") as arquivo:
 				arquivo.writelines(lista_ordenada)
 			
 		elif opcao_ordenacao == "D":
 			lista_ordenada = sorted(linhas, reverse=True)
 			print("##### Usuárias ordenadas de forma DECRESCENTE ######")
 			print("\n".join(lista_ordenada)+"\n")
-			with open("D:\\sinais\\usuarios.csv","w") as arquivo:
+			with open("D:\\desenv\\usuarios.csv","w") as arquivo:
 				arquivo.writelines(lista_ordenada)
 				
 
