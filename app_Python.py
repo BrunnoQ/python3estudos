@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import cadfunc
 import time
 import os
